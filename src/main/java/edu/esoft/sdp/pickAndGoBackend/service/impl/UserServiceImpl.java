@@ -26,8 +26,24 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
+    public User registerUser(User user) throws Exception {
+
+        if(!this.isUsernameAlreadyExists(user.getUsername())){
+            return userDao.save(user);
+
+        }else{
+            throw new Exception("Username is already taken");
+        }
+    }
+
+    @Override
     public User getUserByUsername(String username) {
         return userDao.findByUsername(username);
+    }
+
+    @Override
+    public boolean isUsernameAlreadyExists(String username) {
+        return userDao.existsByUsername(username);
     }
 
     @Override
@@ -42,4 +58,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
             throw new UsernameNotFoundException("User not found");
         }
     }
+
+
 }
