@@ -14,15 +14,19 @@ public class User {
     private String username;
     private String password;
     private String role;
+    private String address;
+    private String telephone;
 
     public User() {
     }
 
-    public User(Long id, String username, String password, String role) {
+    public User(Long id, String username, String password, String role, String address, String telephone) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.role = role;
+        this.address = address;
+        this.telephone = telephone;
     }
 
     public Long getId() {
@@ -55,6 +59,22 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
 }
 
