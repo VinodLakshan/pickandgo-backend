@@ -31,16 +31,11 @@ public class BranchServiceImpl implements BranchService {
         return branchRepository.findAll();
     }
 
-    @Override
-    public List<Branch> getAllBranches(Integer branchID) {
-        return null;
-    }
-
     // TO FETCH ALL BRANCH OBJECT BY ID FROM THE DB (GET)
     @Override
     public Branch getBranchById(Integer id) throws Exception {
         return branchRepository.findById(id).
-                orElseThrow(() -> new Exception("Farmer not found for id = " + id));
+                orElseThrow(() -> new Exception("Branch not found for id = " + id));
     }
 
     // TO DELETE A BRANCH (DELETE)
@@ -50,8 +45,4 @@ public class BranchServiceImpl implements BranchService {
         return "Branch with ID " + id + "Has Been Removed Successfully";
     }
 
-    @Override
-    public Branch updateBranch(Branch branch) {
-        return null;
-    }
 }
