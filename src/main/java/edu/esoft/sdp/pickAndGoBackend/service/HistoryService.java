@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 
 public interface HistoryService {
 
-    User getUserById(Integer id);
-
-    DeliveryStatus saveHistory(HistoryService historyService);
+//    User getUserById(Integer id);
+//
+//    DeliveryStatus saveHistory(HistoryService historyService);
 }

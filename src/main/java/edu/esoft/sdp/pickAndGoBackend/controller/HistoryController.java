@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 public class HistoryController {
 
-    private final HistoryService historyService;
-
-    public HistoryController(HistoryService historyService) {
-        this.historyService = historyService;
-    }
+//    private final HistoryService historyService;
+//
+//    public HistoryController(HistoryService historyService) {
+//        this.historyService = historyService;
+//    }
 
 //    @PostMapping
 //    public DeliveryStatus getPaymentHistory(@RequestBody HistoryDto historyDto){
@@ -31,9 +31,9 @@ public class HistoryController {
 //        return historyService.saveHistory(historyService);
 //    }
 
-    @GetMapping("/{id}")
-    public User getUserById(@PathVariable Integer id) throws Exception {
-        return historyService.getUserById(id);
-    }
+//    @GetMapping("/{id}")
+//    public User getUserById(@PathVariable Integer id) throws Exception {
+//        return historyService.getUserById(id);
+//    }
 
 }
