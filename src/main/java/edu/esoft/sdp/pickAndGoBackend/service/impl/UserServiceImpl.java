@@ -1,6 +1,7 @@
 package edu.esoft.sdp.pickAndGoBackend.service.impl;
 
-import edu.esoft.sdp.pickAndGoBackend.dao.UserDao;
+import edu.esoft.sdp.pickAndGoBackend.repository.RoleRepository;
+import edu.esoft.sdp.pickAndGoBackend.repository.UserRepository;
 import edu.esoft.sdp.pickAndGoBackend.dto.AuthUserDto;
 import edu.esoft.sdp.pickAndGoBackend.model.User;
 import edu.esoft.sdp.pickAndGoBackend.service.UserService;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -18,18 +20,29 @@ import java.util.Collection;
 public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Autowired
-    private UserDao userDao;
+    private UserRepository userRepository;
+
+    @Autowired
+    private RoleRepository roleRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public Collection<User> getAllUsers() {
-        return userDao.findAll();
+        return userRepository.findAll();
     }
 
     @Override
     public User registerUser(User user) throws Exception {
 
         if(!this.isUsernameAlreadyExists(user.getUsername())){
-            return userDao.save(user);
+
+            User clonedUser = (User) user.clone();
+            clonedUser.setPassword(passwordEncoder.encode(user.getPassword()));
+            User savedUser = userRepository.saveAndFlush(clonedUser);
+            if(savedUser != null) savedUser.setRole(roleRepository.getById(savedUser.getRole().getId()));
+            return savedUser;
 
         }else{
             throw new Exception("Username is already taken");
@@ -38,12 +51,12 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public User getUserByUsername(String username) {
-        return userDao.findByUsername(username);
+        return userRepository.findByUsername(username);
     }
 
     @Override
     public boolean isUsernameAlreadyExists(String username) {
-        return userDao.existsByUsername(username);
+        return userRepository.existsByUsername(username);
     }
 
     @Override
