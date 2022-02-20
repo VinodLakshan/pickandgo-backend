@@ -31,7 +31,7 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseDto registerUser(@RequestBody User user){
+    public ResponseEntity<?> registerUser(@RequestBody User user){
 
         log.info("User is being registered");
 
@@ -40,7 +40,7 @@ public class AuthController {
 
             if(registerUser != null) {
                 log.info("User is created");
-                return jwtUtil.authenticate(user);
+                return ResponseEntity.ok(jwtUtil.authenticate(user));
 
             }else{
                 log.error("user registration is failed");
@@ -49,8 +49,7 @@ public class AuthController {
 
         } catch (Exception e) {
             log.error(e.getMessage());
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
-
-        return null;
     }
 }
