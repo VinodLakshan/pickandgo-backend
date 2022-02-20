@@ -10,7 +10,7 @@ public class Branch {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int branchId;
+    private Integer branchId;
     private String district;
     private String city;
     private String telephone;
