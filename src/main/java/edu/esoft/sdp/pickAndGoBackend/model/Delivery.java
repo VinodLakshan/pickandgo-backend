@@ -14,7 +14,7 @@ public class Delivery {
     private double totalAmount;
 
     @ManyToOne
-    private Sender sender;
+    private User sender;
 
     @OneToOne
     private Receiver receiver;
@@ -69,11 +69,11 @@ public class Delivery {
         this.totalAmount = totalAmount;
     }
 
-    public Sender getSender() {
+    public User getSender() {
         return sender;
     }
 
-    public void setSender(Sender sender) {
+    public void setSender(User sender) {
         this.sender = sender;
     }
 

@@ -6,22 +6,30 @@ import javax.persistence.*;
 @Table(uniqueConstraints = {
         @UniqueConstraint(columnNames = "username")
 })
-public class User {
+public class User implements Cloneable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String name;
     private String username;
     private String password;
-    private String role;
+    private String address;
+    private String telephone;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Role role;
 
     public User() {
     }
 
-    public User(Long id, String username, String password, String role) {
+    public User(Long id, String name, String username, String password, String address, String telephone, Role role) {
         this.id = id;
+        this.name = name;
         this.username = username;
         this.password = password;
+        this.address = address;
+        this.telephone = telephone;
         this.role = role;
     }
 
@@ -31,6 +39,14 @@ public class User {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getUsername() {
@@ -49,12 +65,33 @@ public class User {
         this.password = password;
     }
 
-    public String getRole() {
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Role role) {
         this.role = role;
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }
 
