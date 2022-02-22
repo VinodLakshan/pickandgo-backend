@@ -8,13 +8,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
+@CrossOrigin(origins = "*")
 @Slf4j
 public class AuthController {
 
@@ -25,9 +23,9 @@ public class AuthController {
     private UserService userService;
 
     @PostMapping("/login")
-    public ResponseDto userLogin(@RequestBody User user){
+    public ResponseEntity<?> userLogin(@RequestBody User user){
         log.info("User is logging in");
-        return jwtUtil.authenticate(user);
+        return ResponseEntity.ok(jwtUtil.authenticate(user));
     }
 
     @PostMapping("/register")
