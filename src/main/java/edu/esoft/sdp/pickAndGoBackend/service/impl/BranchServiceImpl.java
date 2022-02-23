@@ -33,14 +33,14 @@ public class BranchServiceImpl implements BranchService {
 
     // TO FETCH ALL BRANCH OBJECT BY ID FROM THE DB (GET)
     @Override
-    public Branch getBranchById(Integer id) throws Exception {
+    public Branch getBranchById(Long id) throws Exception {
         return branchRepository.findById(id).
                 orElseThrow(() -> new Exception("Branch not found for id = " + id));
     }
 
     // TO DELETE A BRANCH (DELETE)
     @Override
-    public String deleteBranch(Integer id) {
+    public String deleteBranch(Long id) {
         branchRepository.deleteById(id);
         return "Branch with ID " + id + " Has Been Removed Successfully";
     }

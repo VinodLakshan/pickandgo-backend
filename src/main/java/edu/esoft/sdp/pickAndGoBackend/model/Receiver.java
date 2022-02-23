@@ -10,7 +10,7 @@ public class Receiver {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long senderId;
+    private long recieverId;
     private String name;
     private String mobileNo;
     private String address;
@@ -18,13 +18,9 @@ public class Receiver {
     public Receiver() {
     }
 
-    public long getSenderId() {
-        return senderId;
-    }
+    public long getRecieverId() { return recieverId; }
 
-    public void setSenderId(long senderId) {
-        this.senderId = senderId;
-    }
+    public void setRecieverId(long recieverId) { this.recieverId = recieverId; }
 
     public String getName() {
         return name;

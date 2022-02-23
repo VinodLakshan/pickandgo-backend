@@ -60,16 +60,23 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
+    public User getUserById(Long id) throws Exception{
+        return this.userRepository.findById(id).
+                orElseThrow(() -> new Exception("User not found for id = " + id));
+    }
+
+    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User userByUsername = this.getUserByUsername(username);
-        if(userByUsername != null) {
-            log.info("User found by username");
-            return new AuthUserDto(userByUsername);
 
-        }else{
+        if(userByUsername == null) {
             log.error("User not found.");
             throw new UsernameNotFoundException("User not found");
         }
+
+        log.info("User found by username");
+        return new AuthUserDto(userByUsername);
+
     }
 
 
