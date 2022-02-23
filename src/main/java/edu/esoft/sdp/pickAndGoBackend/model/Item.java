@@ -1,9 +1,6 @@
 package edu.esoft.sdp.pickAndGoBackend.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Item {
@@ -15,6 +12,9 @@ public class Item {
     private String dimension;
     private String weight;
     private String amount;
+
+    @ManyToOne
+    private Delivery delivery;
 
     public Item() {
     }
@@ -58,4 +58,8 @@ public class Item {
     public void setAmount(String amount) {
         this.amount = amount;
     }
+
+    public Delivery getDelivery() { return delivery; }
+
+    public void setDelivery(Delivery delivery) { this.delivery = delivery; }
 }

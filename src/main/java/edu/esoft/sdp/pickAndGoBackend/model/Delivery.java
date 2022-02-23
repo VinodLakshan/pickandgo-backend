@@ -39,13 +39,35 @@ public class Delivery {
     @ManyToOne
     private Branch destinationBranch;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<DeliveryDetails> deliveryDetails;
+//    @OneToMany(cascade = CascadeType.ALL)
+//    private List<DeliveryDetails> deliveryDetails;
 
     @ManyToOne
     private Vehicle vehicle;
 
     public Delivery() {
+    }
+
+    public Delivery(long deliveryId, String scheduledPickupAt, String date, String pickUpLongitute,
+                    String pickupLatitute, String scheduledDeliverAt, String deliverLongitute, String deliverLatitute,
+                    double totalAmount, User user, Receiver receiver, Sender sender, Payment payment,
+                    Branch pickupBranch, Branch destinationBranch, Vehicle vehicle) {
+        this.deliveryId = deliveryId;
+        this.scheduledPickupAt = scheduledPickupAt;
+        this.date = date;
+        this.pickUpLongitute = pickUpLongitute;
+        this.pickupLatitute = pickupLatitute;
+        this.scheduledDeliverAt = scheduledDeliverAt;
+        this.deliverLongitute = deliverLongitute;
+        this.deliverLatitute = deliverLatitute;
+        this.totalAmount = totalAmount;
+        this.user = user;
+        this.receiver = receiver;
+        this.sender = sender;
+        this.payment = payment;
+        this.pickupBranch = pickupBranch;
+        this.destinationBranch = destinationBranch;
+        this.vehicle = vehicle;
     }
 
     public long getDeliveryId() {
@@ -118,14 +140,6 @@ public class Delivery {
 
     public void setDestinationBranch(Branch destinationBranch) {
         this.destinationBranch = destinationBranch;
-    }
-
-    public List<DeliveryDetails> getDeliveryDetails() {
-        return deliveryDetails;
-    }
-
-    public void setDeliveryDetails(List<DeliveryDetails> deliveryDetails) {
-        this.deliveryDetails = deliveryDetails;
     }
 
     public Vehicle getVehicle() {
