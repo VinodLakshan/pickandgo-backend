@@ -28,9 +28,11 @@ public class DeliveryServiceImpl implements DeliveryService {
     private BranchService branchService;
     @Autowired
     private DeliveryStatusService deliveryStatusService;
+    @Autowired
+    private DeliveryDetailService deliveryDetailService;
 
     @Override
-    public Delivery placeDelevery(DeliveryInputDto deliveryInputDto) {
+    public Delivery placeDelevery(DeliveryInputDto deliveryInputDto) throws Exception{
         try {
             //  saving sender and receiver
             Sender newSender = this.senderService.createNewSender(deliveryInputDto.getSender());
@@ -60,12 +62,13 @@ public class DeliveryServiceImpl implements DeliveryService {
             DeliveryStatus getInitialStatus = this.deliveryStatusService.getDeliveryStatusByStatus("NEW");
             DeliveryDetails savedDeliveryDetail = new DeliveryDetails(0, new Date().toString(),
                     userById.getName() + " has initiated the delivery request.", getInitialStatus, savedDelivery);
+            this.deliveryDetailService.createNewDeliveryDetail(savedDeliveryDetail);
 
-//            System.out.println(getInitialStatus.getStatus());
+            return savedDelivery;
 
         }catch (Exception exception){
-
+            System.out.println("Something went wrong with the make request trasaction" +exception.getMessage());
+            throw new Exception("Something went wrong with the make request trasaction",exception);
         }
-        return null;
     }
 }
