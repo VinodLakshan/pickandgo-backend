@@ -7,10 +7,12 @@ import edu.esoft.sdp.pickAndGoBackend.repository.DeliveryDetailRepository;
 import edu.esoft.sdp.pickAndGoBackend.repository.DeliveryRepository;
 import edu.esoft.sdp.pickAndGoBackend.repository.DeliveryStatusRepository;
 import edu.esoft.sdp.pickAndGoBackend.service.HistoryService;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class HistoryServiceImpl implements HistoryService {
 
     private final BranchRepository branchRepository;
@@ -32,10 +34,10 @@ public class HistoryServiceImpl implements HistoryService {
     @Override
     public List<HistoryDto> viewHistoryReport() {
         List<DeliveryDetails> allDeliveries = deliveryDetailRepository.findAll();
-        List<HistoryDto> historyDtos = new ArrayList<>();
+        List<HistoryDto> historyDto = new ArrayList<>();
         for (DeliveryDetails deliveryDetails: allDeliveries) {
-            historyDtos.add(new HistoryDto(deliveryDetails.getDateTime(), deliveryDetails.getDeliveryStatus()));
+            historyDto.add(new HistoryDto(deliveryDetails.getDateTime(), deliveryDetails.getDeliveryStatus()));
         }
-        return historyDtos;
+        return historyDto;
     }
 }
