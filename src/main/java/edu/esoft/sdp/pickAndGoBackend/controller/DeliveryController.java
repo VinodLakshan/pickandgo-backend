@@ -1,6 +1,7 @@
 package edu.esoft.sdp.pickAndGoBackend.controller;
 
 import edu.esoft.sdp.pickAndGoBackend.dto.DeliveryInputDto;
+import edu.esoft.sdp.pickAndGoBackend.model.Delivery;
 import edu.esoft.sdp.pickAndGoBackend.service.DeliveryService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,12 @@ public class DeliveryController {
 
     @PostMapping("/make-delivery")
     public ResponseEntity<?> placeDelivery(@RequestBody DeliveryInputDto deliveryInputDto){
-        deliveryService.placeDelevery(deliveryInputDto);
-        return ResponseEntity.ok(deliveryInputDto);
+        try{
+            Delivery delivery = deliveryService.placeDelevery(deliveryInputDto);
+            return ResponseEntity.ok(delivery);
+        }catch (Exception exception){
+            return null;
+        }
+
     }
 }

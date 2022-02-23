@@ -5,5 +5,5 @@ import edu.esoft.sdp.pickAndGoBackend.model.Delivery;
 
 public interface DeliveryService {
 
-    Delivery placeDelevery(DeliveryInputDto deliveryInputDto);
+    Delivery placeDelevery(DeliveryInputDto deliveryInputDto) throws Exception;
 }
