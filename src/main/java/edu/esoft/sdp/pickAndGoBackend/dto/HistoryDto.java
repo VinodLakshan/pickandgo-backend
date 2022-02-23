@@ -1,37 +1,55 @@
 package edu.esoft.sdp.pickAndGoBackend.dto;
 
+import edu.esoft.sdp.pickAndGoBackend.model.*;
+
 public class HistoryDto {
 
-    private Integer userId;
-    private Integer branchId;
-    private Integer priceId;
+    private Sender senderId;
+    private Branch branchId;
+    private Payment priceId;
     private Double paymentAmount;
     private String date;
     private String name;
-    private String status;
+    private DeliveryStatus status;
     private String role;
 
-    public Integer getUserId() {
-        return userId;
+    public HistoryDto(Sender senderId, Branch branchId, Payment priceId, Double paymentAmount, String dateTime, String name, DeliveryStatus deliveryStatus, String role) {
+        this.senderId = senderId;
+        this.branchId = branchId;
+        this.priceId = priceId;
+        this.paymentAmount = paymentAmount;
+        this.date = dateTime;
+        this.name = name;
+        this.status = deliveryStatus;
+        this.role = role;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public HistoryDto(String dateTime, DeliveryStatus deliveryStatus) {
+        this.status = deliveryStatus;
+        this.date = dateTime;
     }
 
-    public Integer getBranchId() {
+    public Sender getSenderId() {
+        return senderId;
+    }
+
+    public void setSenderId(Sender senderId) {
+        this.senderId = senderId;
+    }
+
+    public Branch getBranchId() {
         return branchId;
     }
 
-    public void setBranchId(Integer branchId) {
+    public void setBranchId(Branch branchId) {
         this.branchId = branchId;
     }
 
-    public Integer getPriceId() {
+    public Payment getPriceId() {
         return priceId;
     }
 
-    public void setPriceId(Integer priceId) {
+    public void setPriceId(Payment priceId) {
         this.priceId = priceId;
     }
 
@@ -59,11 +77,11 @@ public class HistoryDto {
         this.name = name;
     }
 
-    public String getStatus() {
+    public DeliveryStatus getDeliveryStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setDeliveryStatus(DeliveryStatus deliveryStatus) {
         this.status = status;
     }
 
@@ -75,3 +93,4 @@ public class HistoryDto {
         this.role = role;
     }
 }
+
