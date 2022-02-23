@@ -34,15 +34,18 @@ public class DeliveryInputDto {
 
     private Vehicle vehicle;
 
+    private List<Item> items;
+
 
     public DeliveryInputDto(){
 
     }
+
     public DeliveryInputDto(long deliveryId, String scheduledPickupAt, String date, String pickUpLongitute,
                             String pickupLatitute, String scheduledDeliverAt, String deliverLongitute,
-                            String deliverLatitute, double totalAmount, User user, Receiver receiver, Sender sender,
-                            Payment payment, Branch pickupBranch, Branch destinationBranch,
-                            List<DeliveryDetails> deliveryDetails, Vehicle vehicle) {
+                            String deliverLatitute, double totalAmount, User user, Receiver receiver,
+                            Sender sender, Payment payment, Branch pickupBranch, Branch destinationBranch,
+                            List<DeliveryDetails> deliveryDetails, Vehicle vehicle, List<Item> items) {
         this.deliveryId = deliveryId;
         this.scheduledPickupAt = scheduledPickupAt;
         this.date = date;
@@ -60,6 +63,7 @@ public class DeliveryInputDto {
         this.destinationBranch = destinationBranch;
         this.deliveryDetails = deliveryDetails;
         this.vehicle = vehicle;
+        this.items = items;
     }
 
     public long getDeliveryId() { return deliveryId; }
@@ -129,4 +133,8 @@ public class DeliveryInputDto {
     public Vehicle getVehicle() { return vehicle; }
 
     public void setVehicle(Vehicle vehicle) { this.vehicle = vehicle; }
+
+    public List<Item> getItems() { return items; }
+
+    public void setItems(List<Item> items) { this.items = items; }
 }

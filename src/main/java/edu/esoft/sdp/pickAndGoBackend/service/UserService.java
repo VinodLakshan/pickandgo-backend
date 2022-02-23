@@ -10,4 +10,5 @@ public interface UserService {
     User registerUser(User user) throws Exception;
     User getUserByUsername(String username);
     boolean isUsernameAlreadyExists(String username);
+    User getUserById(Long id) throws Exception;
 }
