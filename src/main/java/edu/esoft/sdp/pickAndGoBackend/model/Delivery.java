@@ -10,14 +10,25 @@ public class Delivery {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long deliveryId;
     private String scheduledPickupAt;
+    private String date;
+
+    private String pickUpLongitute;
+    private String pickupLatitute;
+
     private String scheduledDeliverAt;
+    private String deliverLongitute;
+    private String deliverLatitute;
+
     private double totalAmount;
 
     @ManyToOne
-    private User sender;
+    private User user;
 
     @OneToOne
     private Receiver receiver;
+
+    @OneToOne
+    private Sender sender;
 
     @OneToOne
     private Payment payment;
@@ -69,12 +80,12 @@ public class Delivery {
         this.totalAmount = totalAmount;
     }
 
-    public User getSender() {
-        return sender;
+    public User getUser() {
+        return user;
     }
 
-    public void setSender(User sender) {
-        this.sender = sender;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Receiver getReceiver() {
@@ -124,4 +135,28 @@ public class Delivery {
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
     }
+
+    public Sender getSender() { return sender; }
+
+    public void setSender(Sender sender) { this.sender = sender; }
+
+    public String getPickUpLongitute() { return pickUpLongitute; }
+
+    public void setPickUpLongitute(String pickUpLongitute) { this.pickUpLongitute = pickUpLongitute; }
+
+    public String getPickupLatitute() { return pickupLatitute; }
+
+    public void setPickupLatitute(String pickupLatitute) { this.pickupLatitute = pickupLatitute; }
+
+    public String getDeliverLongitute() { return deliverLongitute; }
+
+    public void setDeliverLongitute(String deliverLongitute) { this.deliverLongitute = deliverLongitute; }
+
+    public String getDeliverLatitute() { return deliverLatitute; }
+
+    public void setDeliverLatitute(String deliverLatitute) { this.deliverLatitute = deliverLatitute; }
+
+    public String getDate() { return date; }
+
+    public void setDate(String date) { this.date = date; }
 }
