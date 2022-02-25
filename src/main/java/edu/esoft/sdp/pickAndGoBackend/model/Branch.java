@@ -15,6 +15,8 @@ public class Branch implements Serializable {
     private String district;
     private String city;
     private String telephone;
+    private Double Latitude;
+    private Double Longitude;
 
     public Branch() {
     }

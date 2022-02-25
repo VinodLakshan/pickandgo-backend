@@ -1,5 +1,5 @@
 server:
-  port: 9091
+  port: 8080
   servlet:
     context-path: /pickandgo
 
@@ -8,7 +8,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     url: jdbc:mysql://localhost:3306/pickandgodb?createDatabaseIfNotExist=true
-    password: password
+    password:
   jpa:
     hibernate:
       ddl-auto: update
