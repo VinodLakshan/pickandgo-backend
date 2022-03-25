@@ -29,8 +29,7 @@ public class HistoryServiceImpl implements HistoryService {
         this.deliveryRepository = deliveryRepository;
         this.deliveryDetailRepository = deliveryDetailRepository;
     }
-
-
+    
     @Override
     public List<HistoryDto> viewHistoryReport() {
         List<DeliveryDetails> allDeliveries = deliveryDetailRepository.findAll();
