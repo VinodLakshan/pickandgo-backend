@@ -1,5 +1,6 @@
 package edu.esoft.sdp.pickAndGoBackend.controller;
 
+import edu.esoft.sdp.pickAndGoBackend.dto.AllocationDto;
 import edu.esoft.sdp.pickAndGoBackend.dto.DeliveryInputDto;
 import edu.esoft.sdp.pickAndGoBackend.model.Delivery;
 import edu.esoft.sdp.pickAndGoBackend.service.DeliveryService;
@@ -26,5 +27,23 @@ public class DeliveryController {
             return null;
         }
 
+    }
+
+    @PutMapping
+    public ResponseEntity<?> allocatePerson(@RequestBody AllocationDto allocationDto) {
+        try{
+            return ResponseEntity.ok(deliveryService.allocatePearson(allocationDto));
+        }catch (Exception exception){
+            return null;
+        }
+    }
+
+    @GetMapping
+    public ResponseEntity<?> getAllDeliveries() {
+        try{
+            return ResponseEntity.ok(deliveryService.getAllDeliveries());
+        }catch (Exception exception){
+            return null;
+        }
     }
 }

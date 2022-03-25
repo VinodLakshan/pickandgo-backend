@@ -1,7 +1,9 @@
 package edu.esoft.sdp.pickAndGoBackend.service.impl;
 
+import edu.esoft.sdp.pickAndGoBackend.dto.AllocationDto;
 import edu.esoft.sdp.pickAndGoBackend.dto.DeliveryInputDto;
 import edu.esoft.sdp.pickAndGoBackend.model.*;
+import edu.esoft.sdp.pickAndGoBackend.repository.DeliveryPersonRepository;
 import edu.esoft.sdp.pickAndGoBackend.repository.DeliveryRepository;
 import edu.esoft.sdp.pickAndGoBackend.service.*;
 import lombok.extern.slf4j.Slf4j;
@@ -9,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 @Slf4j
@@ -30,6 +33,8 @@ public class DeliveryServiceImpl implements DeliveryService {
     private DeliveryStatusService deliveryStatusService;
     @Autowired
     private DeliveryDetailService deliveryDetailService;
+    @Autowired
+    private DeliveryPersonRepository deliveryPersonRepository;
 
     @Override
     public Delivery placeDelevery(DeliveryInputDto deliveryInputDto) throws Exception{
@@ -70,5 +75,42 @@ public class DeliveryServiceImpl implements DeliveryService {
             System.out.println("Something went wrong with the make request trasaction" +exception.getMessage());
             throw new Exception("Something went wrong with the make request trasaction",exception);
         }
+    }
+
+    @Override
+    public List<Delivery> getAllDeliveries() {
+        return deliveryRepository.findAll();
+    }
+
+    @Override
+    public boolean allocatePearson(AllocationDto allocationDto) {
+
+        try {
+            Delivery delivery = deliveryRepository.findById(allocationDto.getDeliveryId()).orElse(null);
+            DeliveryPerson deliveryPerson = deliveryPersonRepository
+                    .findById(allocationDto.getDeliveryPersonId()).orElse(null);
+            delivery.setDeliveryPerson(deliveryPerson);
+
+            String desc = "";
+            if (allocationDto.getNextStatus().equalsIgnoreCase("PICKED_UP")){
+                desc = "Order has been picked up.";
+            } else if (allocationDto.getNextStatus().equalsIgnoreCase("ALLOCATED")){
+                desc = "A pick up person has been allocated";
+            }
+            DeliveryStatus getInitialStatus = this.deliveryStatusService.getDeliveryStatusByStatus(allocationDto.getNextStatus());
+            DeliveryDetails savedDeliveryDetail = new DeliveryDetails( new Date().toString(),
+                    desc, getInitialStatus, delivery);
+            this.deliveryDetailService.createNewDeliveryDetail(savedDeliveryDetail);
+
+            deliveryRepository.save(delivery);
+            deliveryPersonRepository.save(deliveryPerson);
+
+            return true;
+
+        } catch (Exception ex) {
+            log.error(ex.getMessage());
+            return  false;
+        }
+
     }
 }
