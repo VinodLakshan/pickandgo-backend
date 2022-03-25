@@ -19,37 +19,31 @@ import java.util.List;
 @Slf4j
 public class BranchController {
 
-//    @Autowired
-//    private BranchService branchService;
-//
-//    @PostMapping()
-//    public ResponseEntity<Branch> createNewBranch (@RequestBody Branch branch) {
-//        log.info("New Branch Has been Created");
-//        return new ResponseEntity(new ResponseDto(branchService.createBranch(branch), HttpStatus.OK), HttpStatus.OK);
-//
-//    }
-//
-//    @GetMapping()
-//    public ResponseEntity<Branch> getAllBranches() {
-//        log.info("Retrieving all branch");
-//        return new ResponseEntity(new ResponseDto(branchService.getAllBranches(), HttpStatus.OK), HttpStatus.OK);
-//    }
-//
-//    @GetMapping("/{id}")
-//    public ResponseEntity<Branch> getBranchById(@PathVariable Integer id) throws Exception {
-//        return new ResponseEntity(new ResponseDto(branchService.getBranchById(id), HttpStatus.OK), HttpStatus.OK);
-//    }
-//
-//    @GetMapping("/getByDistrictID/{id}")
-//    public List<Branch> getAllBranchByDistrictID(@PathVariable Integer id) throws Exception
-//    {
-//        return branchService.getAllBranches(id);
-//    }
-//
-//    @DeleteMapping("/{id}")
-//    public ResponseEntity<Branch> deleteBranch (@PathVariable Integer id) {
-//        log.info("A Branch has been Deleted");
-//        return new ResponseEntity(new ResponseDto(branchService.deleteBranch(id), HttpStatus.OK), HttpStatus.OK);
-//    }
+    @Autowired
+    private BranchService branchService;
+
+    @PostMapping()
+    public Branch createNewBranch (@RequestBody Branch branch) {
+        log.info("New Branch Has been Created");
+        return branchService.createBranch(branch);
+
+    }
+
+    @GetMapping()
+    public List<Branch> getAllBranches() {
+        log.info("Retrieving all branch");
+        return branchService.getAllBranches();
+    }
+
+    @GetMapping("/{id}")
+    public Branch getBranchById(@PathVariable Integer id) throws Exception {
+        return branchService.getBranchById(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public String deleteBranch (@PathVariable Integer id) {
+        log.info("A Branch has been Deleted");
+        return branchService.deleteBranch(id);
+    }
 
 }

@@ -1,4 +1,5 @@
 server:
+  port: 8080
   servlet:
     context-path: /pickandgo
 
@@ -7,7 +8,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     url: jdbc:mysql://localhost:3306/pickandgodb?createDatabaseIfNotExist=true
-    password: 9696
+    password:
   jpa:
     hibernate:
       ddl-auto: update
@@ -18,6 +19,18 @@ spring:
   sql:
     init:
       mode: always
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: pickandgo.sdp@gmail.com
+    password: pickandgo
+    protocol: smtp
+#    tls: true
+    properties.mail.smtp:
+      auth: true
+      starttls.enable: true
+      ssl.trust: smtp.gmail.com
 
   main:
     allow-circular-references: true

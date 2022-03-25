@@ -4,25 +4,28 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 @Entity
-public class Branch {
+public class Branch implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long branchId;
+    private Integer branchId;
     private String district;
     private String city;
     private String telephone;
+    private Double Latitude;
+    private Double Longitude;
 
     public Branch() {
     }
 
-    public long getBranchId() {
+    public Integer getBranchId() {
         return branchId;
     }
 
-    public void setBranchId(long branchId) {
+    public void setBranchId(Integer branchId) {
         this.branchId = branchId;
     }
 

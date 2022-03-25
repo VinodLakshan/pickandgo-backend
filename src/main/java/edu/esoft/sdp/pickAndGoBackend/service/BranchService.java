@@ -12,13 +12,9 @@ public interface BranchService {
 
     List<Branch> getAllBranches();
 
-    List<Branch> getAllBranches(Integer branchID);
+    Branch getBranchById(Integer id) throws Exception;
 
-    Branch getBranchById(Long id) throws Exception;
+    String deleteBranch(Integer id);
 
-    String deleteBranch(Long id);
 
-    Branch updateBranch(Branch branch);
-
-    //    List<Branch> getAllBranch(Integer id);
 }

@@ -2,7 +2,7 @@ package edu.esoft.sdp.pickAndGoBackend.dto;
 
 public class BranchInputDto {
 
-    private long branchId;
+    private Integer branchId;
     private String district;
     private String city;
     private String telephone;
@@ -18,11 +18,11 @@ public class BranchInputDto {
         this.telephone = telephone;
     }
 
-    public long getBranchId() {
+    public Integer getBranchId() {
         return branchId;
     }
 
-    public void setBranchId(long branchId) {
+    public void setBranchId(Integer branchId) {
         this.branchId = branchId;
     }
 
