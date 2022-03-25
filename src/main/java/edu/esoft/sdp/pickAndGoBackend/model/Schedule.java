@@ -23,6 +23,7 @@ public class Schedule implements Serializable
     private String pickUp;
     private String reachCustomerBranch;
     private String dispatchToVehicle;
-    private String receiverBranch;
-    private String deliveryReceiver;
+    private String reachReceiverBranch;
+    private String deliver;
+    private double totalDistance;
 }
