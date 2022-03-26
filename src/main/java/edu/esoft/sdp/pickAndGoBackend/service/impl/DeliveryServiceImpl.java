@@ -77,10 +77,10 @@ public class DeliveryServiceImpl implements DeliveryService {
             }
 
             // saving initial delivery detail
-            DeliveryStatus getInitialStatus = this.deliveryStatusService.getDeliveryStatusByStatus("NEW");
-            DeliveryDetails savedDeliveryDetail = new DeliveryDetails(0, new Date().toString(),
-                    userById.getName() + " has initiated the delivery request.", getInitialStatus, savedDelivery);
-            this.deliveryDetailService.createNewDeliveryDetail(savedDeliveryDetail);
+//            DeliveryStatus getInitialStatus = this.deliveryStatusService.getDeliveryStatusByStatus("NEW");
+//            DeliveryDetails savedDeliveryDetail = new DeliveryDetails( new Date().toString(),
+//                    userById.getName() + " has initiated the delivery request.", getInitialStatus, savedDelivery);
+//            this.deliveryDetailService.createNewDeliveryDetail(savedDeliveryDetail);
 
             return savedDelivery;
 

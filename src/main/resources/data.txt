@@ -1,0 +1,13 @@
+INSERT INTO `role` (`id`, `role_name`) VALUES ('1', 'sender');
+INSERT INTO `role` (`id`, `role_name`) VALUES ('2', 'admin');
+INSERT INTO `role` (`id`, `role_name`) VALUES ('3', 'deliveryPerson');
+
+
+INSERT INTO `branch` (`branch_id`, `district`, `city`, `telephone`, `Latitude`, `Longitude`) VALUES ('1', 'Matara', 'Matara', '07701', '1213213', '12312312');
+INSERT INTO `branch` (`branch_id`, `district`, `city`, `telephone`, `Latitude`, `Longitude`) VALUES ('2', 'Galle', 'Galle', '075601', '123221', '32211');
+
+INSERT INTO `user` (`id`, `name`, `username`, `password`, `role_id`) VALUES ('1', 'vinod' , 'vinod', '$2a$12$kARl3CWsmw3Julz7u2Hlq.o1GflQ5zXhfkD8avrx/x6kfKagZLMqW', 1);
+INSERT INTO `user` (`id`, `name`, `username`, `password`, `role_id`) VALUES ('2', 'admin' , 'admin', '$2a$12$kARl3CWsmw3Julz7u2Hlq.o1GflQ5zXhfkD8avrx/x6kfKagZLMqW', 2);
+INSERT INTO `delivery_person` (`delivery_person_id`, `name`, `contact_no`, `status`) VALUES ('1', 'John' , '011', 'Available');
+INSERT INTO `delivery_person` (`delivery_person_id`, `name`, `contact_no`, `status`) VALUES ('2', 'Edge' , '022', 'Available');
+INSERT INTO `delivery_person` (`delivery_person_id`, `name`, `contact_no`, `status`) VALUES ('3', 'Inso' , '033', 'Available');
