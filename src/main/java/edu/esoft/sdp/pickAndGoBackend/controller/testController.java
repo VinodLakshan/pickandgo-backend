@@ -22,12 +22,12 @@ public class testController {
     @Autowired
     private ScheduleService scheduleService;
 
-    @GetMapping
-    public ResponseEntity test(){
-        TrackDelivery trackDelivery = new TrackDelivery(new Delivery());
-        //emailService.sendEmail("arunbalathambu@gmail.com", scheduleService.createSchedule(new Delivery()));
-        return ResponseEntity.ok(trackDelivery);
-    }
+//    @GetMapping
+//    public ResponseEntity test(){
+//        TrackDelivery trackDelivery = new TrackDelivery(new Delivery());
+//        //emailService.sendEmail("arunbalathambu@gmail.com", scheduleService.createSchedule(new Delivery()));
+//        return ResponseEntity.ok(trackDelivery);
+//    }
 
     @GetMapping("/auth")
     public ResponseEntity testAuthenticated(){
