@@ -29,10 +29,10 @@ public class DeliveryController {
 
     }
 
-    @PutMapping
+    @PutMapping("/allocation")
     public ResponseEntity<?> allocatePerson(@RequestBody AllocationDto allocationDto) {
         try{
-            return ResponseEntity.ok(deliveryService.allocatePearson(allocationDto));
+            return ResponseEntity.ok(deliveryService.allocatePerson(allocationDto));
         }catch (Exception exception){
             return null;
         }

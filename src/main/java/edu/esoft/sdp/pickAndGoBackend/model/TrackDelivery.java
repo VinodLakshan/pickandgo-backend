@@ -15,37 +15,150 @@ public class TrackDelivery
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @OneToOne
-    private Delivery delivery;
     private String TrackCode;
-    private int pickUpPersonAssigned;
+    @ManyToOne
+    private DeliveryPerson pickUpPersonAssigned;
     private LocalDateTime pickUpPersonAssignedTime;
-    private int pickedUp;
+    private int pickedUp = 0;
     private LocalDateTime pickedUpTime;
-    private int reachCustomerBranch;
+    private int reachCustomerBranch = 0;
     private LocalDateTime reachCustomerBranchTime;
     private int dispatchToVehicle;
     private LocalDateTime dispatchToVehicleTime;
-    private int reachReceiverBranch;
+    private int reachReceiverBranch = 0;
     private LocalDateTime reachReceiverBranchTime;
-    private int deliverPersonAssigned;
+    @ManyToOne
+    private DeliveryPerson deliverPersonAssigned;
     private LocalDateTime deliverPersonAssignedTime;
-    private int deliver;
+    private int deliver =0;
     private LocalDateTime deliverTime;
 
-    public TrackDelivery(Delivery delivery)
-    {
-        this.TrackCode = UUID.randomUUID().toString();
-        this.delivery = delivery;
-        this.pickUpPersonAssigned = 1;
-        this.pickUpPersonAssignedTime = LocalDateTime.now();
-        this.pickedUp = 1;
-        this.pickedUpTime = LocalDateTime.now();
-        this.reachCustomerBranch = 0;
-        this.dispatchToVehicle = 0;
-        this.reachReceiverBranch = 0;
-        this.deliverPersonAssigned = 0;
-        this.deliver = 0;
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getTrackCode() {
+        return TrackCode;
+    }
+
+    public void setTrackCode(String trackCode) {
+        TrackCode = trackCode;
+    }
+
+    public DeliveryPerson getPickUpPersonAssigned() {
+        return pickUpPersonAssigned;
+    }
+
+    public void setPickUpPersonAssigned(DeliveryPerson pickUpPersonAssigned) {
+        this.pickUpPersonAssigned = pickUpPersonAssigned;
+    }
+
+    public LocalDateTime getPickUpPersonAssignedTime() {
+        return pickUpPersonAssignedTime;
+    }
+
+    public void setPickUpPersonAssignedTime(LocalDateTime pickUpPersonAssignedTime) {
+        this.pickUpPersonAssignedTime = pickUpPersonAssignedTime;
+    }
+
+    public int getPickedUp() {
+        return pickedUp;
+    }
+
+    public void setPickedUp(int pickedUp) {
+        this.pickedUp = pickedUp;
+    }
+
+    public LocalDateTime getPickedUpTime() {
+        return pickedUpTime;
+    }
+
+    public void setPickedUpTime(LocalDateTime pickedUpTime) {
+        this.pickedUpTime = pickedUpTime;
+    }
+
+    public int getReachCustomerBranch() {
+        return reachCustomerBranch;
+    }
+
+    public void setReachCustomerBranch(int reachCustomerBranch) {
+        this.reachCustomerBranch = reachCustomerBranch;
+    }
+
+    public LocalDateTime getReachCustomerBranchTime() {
+        return reachCustomerBranchTime;
+    }
+
+    public void setReachCustomerBranchTime(LocalDateTime reachCustomerBranchTime) {
+        this.reachCustomerBranchTime = reachCustomerBranchTime;
+    }
+
+    public int getDispatchToVehicle() {
+        return dispatchToVehicle;
+    }
+
+    public void setDispatchToVehicle(int dispatchToVehicle) {
+        this.dispatchToVehicle = dispatchToVehicle;
+    }
+
+    public LocalDateTime getDispatchToVehicleTime() {
+        return dispatchToVehicleTime;
+    }
+
+    public void setDispatchToVehicleTime(LocalDateTime dispatchToVehicleTime) {
+        this.dispatchToVehicleTime = dispatchToVehicleTime;
+    }
+
+    public int getReachReceiverBranch() {
+        return reachReceiverBranch;
+    }
+
+    public void setReachReceiverBranch(int reachReceiverBranch) {
+        this.reachReceiverBranch = reachReceiverBranch;
+    }
+
+    public LocalDateTime getReachReceiverBranchTime() {
+        return reachReceiverBranchTime;
+    }
+
+    public void setReachReceiverBranchTime(LocalDateTime reachReceiverBranchTime) {
+        this.reachReceiverBranchTime = reachReceiverBranchTime;
+    }
+
+    public DeliveryPerson getDeliverPersonAssigned() {
+        return deliverPersonAssigned;
+    }
+
+    public void setDeliverPersonAssigned(DeliveryPerson deliverPersonAssigned) {
+        this.deliverPersonAssigned = deliverPersonAssigned;
+    }
+
+    public LocalDateTime getDeliverPersonAssignedTime() {
+        return deliverPersonAssignedTime;
+    }
+
+    public void setDeliverPersonAssignedTime(LocalDateTime deliverPersonAssignedTime) {
+        this.deliverPersonAssignedTime = deliverPersonAssignedTime;
+    }
+
+    public int getDeliver() {
+        return deliver;
+    }
+
+    public void setDeliver(int deliver) {
+        this.deliver = deliver;
+    }
+
+    public LocalDateTime getDeliverTime() {
+        return deliverTime;
+    }
+
+    public void setDeliverTime(LocalDateTime deliverTime) {
+        this.deliverTime = deliverTime;
     }
 
     public TrackDelivery()

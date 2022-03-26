@@ -1,4 +1,0 @@
-INSERT INTO `role` (`id`, `role_name`) VALUES ('1', 'sender');
-INSERT INTO `role` (`id`, `role_name`) VALUES ('2', 'admin');
-INSERT INTO `role` (`id`, `role_name`) VALUES ('3', 'deliveryPerson');
-INSERT INTO `user` (`id`, `name`, `username`, `password`, `role_id`) VALUES ('1', 'vinod' , 'vinod', '$2a$12$kARl3CWsmw3Julz7u2Hlq.o1GflQ5zXhfkD8avrx/x6kfKagZLMqW', 1);

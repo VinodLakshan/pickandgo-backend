@@ -28,6 +28,9 @@ public class Delivery {
     private Receiver receiver;
 
     @OneToOne
+    private TrackDelivery trackDelivery;
+
+    @OneToOne
     private Sender sender;
 
     @OneToOne
@@ -38,9 +41,6 @@ public class Delivery {
 
     @ManyToOne
     private Branch destinationBranch;
-
-    @ManyToOne
-    private DeliveryPerson deliveryPerson;
 
 //    @OneToMany(cascade = CascadeType.ALL)
 //    private List<DeliveryDetails> deliveryDetails;
@@ -177,11 +177,11 @@ public class Delivery {
 
     public void setDate(String date) { this.date = date; }
 
-    public DeliveryPerson getDeliveryPerson() {
-        return deliveryPerson;
+    public TrackDelivery getTrackDelivery() {
+        return trackDelivery;
     }
 
-    public void setDeliveryPerson(DeliveryPerson deliveryPerson) {
-        this.deliveryPerson = deliveryPerson;
+    public void setTrackDelivery(TrackDelivery trackDelivery) {
+        this.trackDelivery = trackDelivery;
     }
 }

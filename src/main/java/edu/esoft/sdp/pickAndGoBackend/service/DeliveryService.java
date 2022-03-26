@@ -10,5 +10,5 @@ public interface DeliveryService {
 
     Delivery placeDelevery(DeliveryInputDto deliveryInputDto) throws Exception;
     List<Delivery> getAllDeliveries();
-    boolean allocatePearson(AllocationDto allocationDto);
+    boolean allocatePerson(AllocationDto allocationDto);
 }

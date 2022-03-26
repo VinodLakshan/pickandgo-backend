@@ -13,8 +13,6 @@ public class DeliveryPerson {
     private String contactNo;
     private String status;
 
-    @OneToMany(mappedBy = "deliveryPerson")
-    private List<Delivery> deliveryList;
 
     public long getDeliveryPersonId() {
         return deliveryPersonId;
@@ -48,11 +46,4 @@ public class DeliveryPerson {
         this.status = status;
     }
 
-    public List<Delivery> getDeliveryList() {
-        return deliveryList;
-    }
-
-    public void setDeliveryList(List<Delivery> deliveryList) {
-        this.deliveryList = deliveryList;
-    }
 }
