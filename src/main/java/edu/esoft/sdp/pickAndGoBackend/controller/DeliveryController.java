@@ -1,6 +1,5 @@
 package edu.esoft.sdp.pickAndGoBackend.controller;
 
-import edu.esoft.sdp.pickAndGoBackend.dto.AllocationDto;
 import edu.esoft.sdp.pickAndGoBackend.dto.DeliveryInputDto;
 import edu.esoft.sdp.pickAndGoBackend.model.Delivery;
 import edu.esoft.sdp.pickAndGoBackend.service.DeliveryService;
@@ -45,5 +44,10 @@ public class DeliveryController {
         }catch (Exception exception){
             return null;
         }
+    }
+
+    @PostMapping("/nearestBranches")
+    public NearestBranchOutPutDto getNerestBranches(@RequestBody NearestBranchInputDto nearestBranchInputDto)throws Exception{
+        return deliveryService.getNearestBranches(nearestBranchInputDto);
     }
 }

@@ -18,6 +18,24 @@ public class Branch implements Serializable {
     private Double Latitude;
     private Double Longitude;
 
+    public Double getLatitude() {
+        return Latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        Latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return Longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        Longitude = longitude;
+    }
+
+
+
     public Branch() {
     }
 

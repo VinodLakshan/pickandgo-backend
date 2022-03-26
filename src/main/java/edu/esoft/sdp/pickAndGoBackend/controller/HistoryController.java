@@ -26,6 +26,4 @@ public class HistoryController {
         return historyService.viewHistoryReport();
     }
 
-
-
 }
