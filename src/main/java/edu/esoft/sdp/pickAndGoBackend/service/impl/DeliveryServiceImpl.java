@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 @Slf4j
@@ -70,5 +71,17 @@ public class DeliveryServiceImpl implements DeliveryService {
             System.out.println("Something went wrong with the make request trasaction" +exception.getMessage());
             throw new Exception("Something went wrong with the make request trasaction",exception);
         }
+    }
+
+
+//    ZAID DEV
+    @Override
+    public List<?> BranchManagerOngoingAndHistory(int branchId, int status) {
+        return deliveryRepository.BranchManagerOngoingAndHistory(branchId, status);
+    }
+
+    @Override
+    public List<?> CustomerOngoingAndHistory(int customerId, int status) {
+        return deliveryRepository.CustomerOngoingAndHistory(customerId, status);
     }
 }
