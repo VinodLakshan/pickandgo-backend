@@ -28,6 +28,9 @@ public class Delivery {
     private Receiver receiver;
 
     @OneToOne
+    private TrackDelivery trackDelivery;
+
+    @OneToOne
     private Sender sender;
 
     @OneToOne
@@ -173,4 +176,12 @@ public class Delivery {
     public String getDate() { return date; }
 
     public void setDate(String date) { this.date = date; }
+
+    public TrackDelivery getTrackDelivery() {
+        return trackDelivery;
+    }
+
+    public void setTrackDelivery(TrackDelivery trackDelivery) {
+        this.trackDelivery = trackDelivery;
+    }
 }

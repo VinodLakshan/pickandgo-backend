@@ -19,13 +19,13 @@ public class TrackDeliveryServiceImpl implements TrackDeliveryService
 
     }
 
-//    @Override
-//    public TrackDelivery getTrackingByTrackingCode(String TrackCode) {
-//        return trackDeliveryRepository.getTrackDeliveryByTrackCode(TrackCode);
-//    }
-//
-//    @Override
-//    public TrackDelivery getTrackingByDelivery(Delivery delivery) {
-//        return trackDeliveryRepository.getTrackDeliveryByDelivery(delivery);
-//    }
+    @Override
+    public TrackDelivery getTrackingByTrackingCode(String TrackCode) {
+        return trackDeliveryRepository.getTrackDeliveryByTrackCode(TrackCode);
+    }
+
+    @Override
+    public TrackDelivery getTrackingByDelivery(Delivery delivery) {
+        return trackDeliveryRepository.getTrackDeliveryByDelivery(delivery);
+    }
 }

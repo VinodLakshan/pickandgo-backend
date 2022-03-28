@@ -1,7 +1,6 @@
 package edu.esoft.sdp.pickAndGoBackend.controller;
 
-import edu.esoft.sdp.pickAndGoBackend.dto.DeliveryInputDto;
-import edu.esoft.sdp.pickAndGoBackend.dto.HistoryDto;
+import edu.esoft.sdp.pickAndGoBackend.dto.*;
 import edu.esoft.sdp.pickAndGoBackend.model.Delivery;
 import edu.esoft.sdp.pickAndGoBackend.service.DeliveryService;
 import lombok.extern.slf4j.Slf4j;
@@ -26,13 +25,41 @@ public class DeliveryController {
         }catch (Exception exception){
             return null;
         }
+
     }
 
-//    Zaid Dev
-
-    @PostMapping("/customerOngoingAndHistory")
-    public ResponseEntity<?> GetCustomerHistory(@RequestBody HistoryDto historyDto) {
-        return ResponseEntity.ok(deliveryService.CustomerOngoingAndHistory(historyDto.getSenderId(), historyDto.getStatus()));
+    @PutMapping("/allocation")
+    public ResponseEntity<?> allocatePerson(@RequestBody AllocationDto allocationDto) {
+        try{
+            return ResponseEntity.ok(deliveryService.allocatePerson(allocationDto));
+        }catch (Exception exception){
+            return null;
+        }
     }
 
+    @GetMapping
+    public ResponseEntity<?> getAllDeliveries() {
+        try{
+            return ResponseEntity.ok(deliveryService.getAllDeliveries());
+        }catch (Exception exception){
+            return null;
+        }
+    }
+
+    @PostMapping("/nearestBranches")
+    public NearestBranchOutPutDto getNerestBranches(@RequestBody NearestBranchInputDto nearestBranchInputDto)throws Exception{
+        return deliveryService.getNearestBranches(nearestBranchInputDto);
+    }
+
+    @GetMapping("/GoodNotAssignedVehicle/{branchId}")
+    public ResponseEntity<?> getGoodsNotAssignedVehicle(@PathVariable Integer branchId)
+    {
+        return ResponseEntity.ok(deliveryService.getDeliveryNotLoadedToVehicle(branchId));
+    }
+
+    @PostMapping("/AssignVehicle")
+    public ResponseEntity<?> assignVehicle(@RequestBody AssignVehicleDto assignVehicleDto)
+    {
+        return ResponseEntity.ok(deliveryService.assignVehicleToDelivery(assignVehicleDto.getDeliveryId(),assignVehicleDto.getVehicleId()));
+    }
 }

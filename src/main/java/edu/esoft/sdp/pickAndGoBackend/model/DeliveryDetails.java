@@ -29,6 +29,13 @@ public class DeliveryDetails {
         this.delivery = delivery;
     }
 
+    public DeliveryDetails(String dateTime, String description, DeliveryStatus deliveryStatus, Delivery delivery) {
+        this.dateTime = dateTime;
+        this.description = description;
+        this.deliveryStatus = deliveryStatus;
+        this.delivery = delivery;
+    }
+
     public long getDeliveryDetailsId() {
         return deliveryDetailsId;
     }

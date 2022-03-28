@@ -5,6 +5,6 @@ import edu.esoft.sdp.pickAndGoBackend.model.TrackDelivery;
 
 public interface TrackDeliveryService {
     void saveTracking(Delivery delivery);
-//    TrackDelivery getTrackingByTrackingCode(String TrackCode);
-//    TrackDelivery getTrackingByDelivery(Delivery delivery);
+    TrackDelivery getTrackingByTrackingCode(String TrackCode);
+    TrackDelivery getTrackingByDelivery(Delivery delivery);
 }
