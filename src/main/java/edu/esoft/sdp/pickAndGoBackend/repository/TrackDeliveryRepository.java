@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TrackDeliveryRepository extends JpaRepository<TrackDelivery,Integer> {
 
-    @Query("select TD from TrackDelivery TD where TD.delivery = :delivery")
+    @Query("select TD from TrackDelivery TD where TD.deliver = :delivery")
     TrackDelivery getTrackDeliveryByDelivery(Delivery delivery);
 
     @Query("select TD from TrackDelivery TD where TD.TrackCode = :trackCode")

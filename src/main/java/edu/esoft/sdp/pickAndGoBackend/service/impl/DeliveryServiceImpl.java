@@ -8,12 +8,14 @@ import edu.esoft.sdp.pickAndGoBackend.model.*;
 import edu.esoft.sdp.pickAndGoBackend.repository.DeliveryPersonRepository;
 import edu.esoft.sdp.pickAndGoBackend.repository.DeliveryRepository;
 import edu.esoft.sdp.pickAndGoBackend.repository.TrackDeliveryRepository;
+import edu.esoft.sdp.pickAndGoBackend.repository.VehicleRepository;
 import edu.esoft.sdp.pickAndGoBackend.service.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
@@ -45,6 +47,9 @@ public class DeliveryServiceImpl implements DeliveryService {
     private DeliveryPersonRepository deliveryPersonRepository;
     @Autowired
     private TrackDeliveryRepository trackDeliveryRepository;
+
+    @Autowired
+    private VehicleRepository vehicleRepository;
 
     @Override
     public Delivery placeDelevery(DeliveryInputDto deliveryInputDto) throws Exception {
@@ -169,5 +174,22 @@ public class DeliveryServiceImpl implements DeliveryService {
         System.out.println(bd.getBranch().getDistrict());
 
         return new NearestBranchOutPutDto(bp.getBranch(),bd.getBranch());
+    }
+
+    @Override
+    public List<?> getDeliveryNotLoadedToVehicle(Integer BranchId) {
+        return deliveryRepository.findAllGoodsNotLoadedToVehicle(BranchId);
+    }
+
+    @Override
+    public Delivery assignVehicleToDelivery(Integer DeliveryId, Integer VehicleId) {
+        Vehicle vehicle = vehicleRepository.getById(VehicleId);
+        Delivery delivery = deliveryRepository.getById((long)DeliveryId);
+        delivery.setVehicle(vehicle);
+        TrackDelivery trackDelivery = trackDeliveryRepository.getTrackDeliveryByDelivery(delivery);
+        trackDelivery.setDispatchToVehicle(1);
+        trackDelivery.setDispatchToVehicleTime(LocalDate.now().atTime(19,0));
+        trackDeliveryRepository.save(trackDelivery);
+        return deliveryRepository.save(delivery);
     }
 }

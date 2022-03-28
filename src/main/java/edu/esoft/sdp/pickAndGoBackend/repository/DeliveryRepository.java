@@ -14,4 +14,7 @@ public interface DeliveryRepository extends JpaRepository<Delivery, Long> {
     @Query(value = "select * from track_delivery TD inner join delivery D on TD.delivery_delivery_id=D.delivery_id where TD.reach_customer_branch==0 and D.pickup_branch_branch_id==:branchId;",nativeQuery = true)
     List<?> findAllGoodsNotReachedCusBranch(@Param("branchId") int branchId );
 
+    @Query(value = "select * from track_delivery TD inner join delivery D on TD.delivery_delivery_id = D.delivery_id where TD.reach_customer_branch = 1 and TD.dispatch_to_vehicle = 0 and D.vehicle_vehicle_id = null and D.pickup_branch_branch_id = :branchId;",nativeQuery = true)
+    List<?> findAllGoodsNotLoadedToVehicle(@Param("branchId") int branchId );
+
 }

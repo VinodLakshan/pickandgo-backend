@@ -1,9 +1,6 @@
 package edu.esoft.sdp.pickAndGoBackend.controller;
 
-import edu.esoft.sdp.pickAndGoBackend.dto.AllocationDto;
-import edu.esoft.sdp.pickAndGoBackend.dto.DeliveryInputDto;
-import edu.esoft.sdp.pickAndGoBackend.dto.NearestBranchInputDto;
-import edu.esoft.sdp.pickAndGoBackend.dto.NearestBranchOutPutDto;
+import edu.esoft.sdp.pickAndGoBackend.dto.*;
 import edu.esoft.sdp.pickAndGoBackend.model.Delivery;
 import edu.esoft.sdp.pickAndGoBackend.service.DeliveryService;
 import lombok.extern.slf4j.Slf4j;
@@ -52,5 +49,17 @@ public class DeliveryController {
     @PostMapping("/nearestBranches")
     public NearestBranchOutPutDto getNerestBranches(@RequestBody NearestBranchInputDto nearestBranchInputDto)throws Exception{
         return deliveryService.getNearestBranches(nearestBranchInputDto);
+    }
+
+    @GetMapping("/GoodNotAssignedVehicle/{branchId}")
+    public ResponseEntity<?> getGoodsNotAssignedVehicle(@PathVariable Integer branchId)
+    {
+        return ResponseEntity.ok(deliveryService.getDeliveryNotLoadedToVehicle(branchId));
+    }
+
+    @PostMapping("/AssignVehicle")
+    public ResponseEntity<?> assignVehicle(@RequestBody AssignVehicleDto assignVehicleDto)
+    {
+        return ResponseEntity.ok(deliveryService.assignVehicleToDelivery(assignVehicleDto.getDeliveryId(),assignVehicleDto.getVehicleId()));
     }
 }
