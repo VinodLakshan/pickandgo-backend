@@ -63,3 +63,4 @@ public class DeliveryController {
         return ResponseEntity.ok(deliveryService.assignVehicleToDelivery(assignVehicleDto.getDeliveryId(),assignVehicleDto.getVehicleId()));
     }
 }
+
