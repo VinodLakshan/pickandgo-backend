@@ -8,7 +8,7 @@ public class Vehicle {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long vehicleId;
+    private Integer vehicleId;
     private String type;
     private String vehicleNo;
     private String status;
@@ -19,11 +19,11 @@ public class Vehicle {
     public Vehicle() {
     }
 
-    public long getVehicleId() {
+    public Integer getVehicleId() {
         return vehicleId;
     }
 
-    public void setVehicleId(long vehicleId) {
+    public void setVehicleId(Integer vehicleId) {
         this.vehicleId = vehicleId;
     }
 

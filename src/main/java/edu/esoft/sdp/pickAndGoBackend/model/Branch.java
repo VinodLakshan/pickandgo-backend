@@ -11,7 +11,7 @@ public class Branch implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer branchId;
+    private Integer branch_id;
     private String district;
     private String city;
     private String telephone;
@@ -40,11 +40,11 @@ public class Branch implements Serializable {
     }
 
     public Integer getBranchId() {
-        return branchId;
+        return branch_id;
     }
 
-    public void setBranchId(Integer branchId) {
-        this.branchId = branchId;
+    public void setBranchId(Integer branch_id) {
+        this.branch_id = branch_id;
     }
 
     public String getDistrict() {

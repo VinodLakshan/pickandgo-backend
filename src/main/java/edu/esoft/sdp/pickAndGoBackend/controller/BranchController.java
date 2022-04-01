@@ -26,7 +26,6 @@ public class BranchController {
     public Branch createNewBranch (@RequestBody Branch branch) {
         log.info("New Branch Has been Created");
         return branchService.createBranch(branch);
-
     }
 
     @GetMapping()

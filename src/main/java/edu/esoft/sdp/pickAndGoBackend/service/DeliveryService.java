@@ -16,4 +16,5 @@ public interface DeliveryService {
     NearestBranchOutPutDto getNearestBranches(NearestBranchInputDto nearestBranchInputDto) throws Exception;
     List<?> getDeliveryNotLoadedToVehicle(Integer BranchId);
     Delivery assignVehicleToDelivery(Integer DeliveryId, Integer VehicleId);
+
 }
